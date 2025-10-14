@@ -18,7 +18,7 @@ import { useToast } from "@/hooks/use-toast";
 import { generateResumeAction } from "@/app/actions";
 import { portfolioData } from "@/lib/data";
 import { Logo } from "@/components/icons";
-import { Github, Linkedin, Mail, Paperclip, Briefcase, Code, Star, Link as LinkIcon, Download, Loader2 } from "lucide-react";
+import { Github, Linkedin, Mail, Paperclip, Briefcase, Code, Star, Link as LinkIcon, Download, Loader2, Phone } from "lucide-react";
 import SkillProgress from "@/components/skill-progress";
 import Image from "next/image";
 import Link from "next/link";
@@ -313,6 +313,16 @@ export default function Home() {
                     </a>
                   </TooltipTrigger>
                   <TooltipContent><p>{portfolioData.profile.email}</p></TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a href={`tel:${portfolioData.profile.phone}`} className="text-muted-foreground transition-colors hover:text-primary">
+                      <Phone className="h-8 w-8" />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent><p>{portfolioData.profile.phone}</p></TooltipContent>
                 </Tooltip>
               </TooltipProvider>
               <TooltipProvider>

@@ -6,6 +6,8 @@ export const portfolioData = {
     phone: '8309844049',
     linkedin: 'https://linkedin.com/in/sai-sagar-519570288',
     github: 'https://github.com/alex-doe', // This is a placeholder, please update
+    instagram: 'https://instagram.com/mr_alone-2107',
+    facebook: 'https://www.facebook.com/sai.sagar.58367',
     skills: [
       { name: 'Java', level: 90 },
       { name: 'HTML', level: 85 },

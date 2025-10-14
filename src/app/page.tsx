@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { portfolioData } from "@/lib/data";
 import { Logo } from "@/components/icons";
-import { Github, Linkedin, Mail, Link as LinkIcon, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, Link as LinkIcon, Phone, Instagram, Facebook } from "lucide-react";
 import SkillProgress from "@/components/skill-progress";
 import Image from "next/image";
 import Link from "next/link";
@@ -242,6 +242,26 @@ export default function Home() {
                     </a>
                   </TooltipTrigger>
                   <TooltipContent><p>GitHub Profile</p></TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a href={portfolioData.profile.instagram} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
+                      <Instagram className="h-8 w-8" />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent><p>Instagram Profile</p></TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a href={portfolioData.profile.facebook} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
+                      <Facebook className="h-8 w-8" />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent><p>Facebook Profile</p></TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             </div>

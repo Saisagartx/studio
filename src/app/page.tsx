@@ -1,32 +1,19 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import React from "react";
 import { motion } from "framer-motion";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter } from "@/components/ui/sheet";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { useToast } from "@/hooks/use-toast";
-import { generateResumeAction } from "@/app/actions";
 import { portfolioData } from "@/lib/data";
 import { Logo } from "@/components/icons";
-import { Github, Linkedin, Mail, Paperclip, Briefcase, Code, Star, Link as LinkIcon, Download, Loader2, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, Link as LinkIcon, Phone } from "lucide-react";
 import SkillProgress from "@/components/skill-progress";
 import Image from "next/image";
 import Link from "next/link";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-
-const resumeSchema = z.object({
-  jobDescription: z.string().min(20, "Job description must be at least 20 characters."),
-});
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -37,46 +24,10 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
-  { name: "Resume", href: "#resume" },
   { name: "Contact", href: "#contact" },
 ];
 
 export default function Home() {
-  const [resume, setResume] = useState<string | null>(null);
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [isPending, startTransition] = useTransition();
-  const { toast } = useToast();
-
-  const form = useForm<z.infer<typeof resumeSchema>>({
-    resolver: zodResolver(resumeSchema),
-    defaultValues: {
-      jobDescription: "",
-    },
-  });
-
-  const onSubmit = (values: z.infer<typeof resumeSchema>) => {
-    startTransition(async () => {
-      const result = await generateResumeAction(values.jobDescription);
-      if (result.success && result.data) {
-        setResume(result.data);
-        setIsSheetOpen(true);
-        toast({
-          title: "Resume Generated!",
-          description: "Your tailored resume is ready to view.",
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Error",
-          description: result.error || "Failed to generate resume.",
-        });
-      }
-    });
-  };
-  
-  const handlePrint = () => {
-    window.print();
-  };
 
   return (
     <div className="flex min-h-screen w-full flex-col">
@@ -237,58 +188,6 @@ export default function Home() {
             </div>
           </motion.section>
         )}
-
-        {/* Resume Section */}
-        <motion.section
-          id="resume"
-          className="w-full py-16 bg-muted/40"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={sectionVariants}
-        >
-          <div className="container max-w-screen-lg">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight">AI Resume Builder</h2>
-              <p className="mt-4 text-muted-foreground">
-                Paste a job description below and my AI assistant will tailor a resume specifically for that role.
-              </p>
-            </div>
-            <Card className="mx-auto mt-8 max-w-2xl">
-              <CardContent className="pt-6">
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <FormField
-                      control={form.control}
-                      name="jobDescription"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="sr-only">Job Description</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Paste the job description here..."
-                              className="min-h-[150px] resize-y"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button type="submit" className="w-full" disabled={isPending}>
-                      {isPending ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Generating...
-                        </>
-                      ) : "Generate Resume"}
-                    </Button>
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
-          </div>
-        </motion.section>
         
         {/* Contact Section */}
         <motion.section
@@ -358,28 +257,6 @@ export default function Home() {
         </div>
       </footer>
       
-      <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-        <SheetContent className="w-full sm:max-w-3xl flex flex-col" id="printable-area">
-          <SheetHeader>
-            <SheetTitle className="text-2xl">Your Tailored Resume</SheetTitle>
-            <SheetDescription>
-              Here's your AI-generated resume. You can copy the text or print the page to save as a PDF.
-            </SheetDescription>
-          </SheetHeader>
-          <div className="flex-1 overflow-y-auto pr-6">
-            <pre className="whitespace-pre-wrap font-body text-sm bg-muted/50 p-4 rounded-md">
-              {resume}
-            </pre>
-          </div>
-          <SheetFooter>
-            <Button variant="outline" onClick={() => setIsSheetOpen(false)}>Close</Button>
-            <Button onClick={handlePrint}>
-              <Download className="mr-2 h-4 w-4" />
-              Print to PDF
-            </Button>
-          </SheetFooter>
-        </SheetContent>
-      </Sheet>
     </div>
   );
 }

@@ -15,6 +15,9 @@ export const portfolioData = {
       { name: 'Spring Boot', level: 80 },
       { name: 'Bootstrap', level: 75 },
       { name: 'SQL', level: 88 },
+      { name: 'Communication', level: 80 },
+      { name: 'Teamwork', level: 85 },
+      { name: 'Adaptability', level: 90 },
     ],
     experience: [],
     projects: [

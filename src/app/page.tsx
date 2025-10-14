@@ -143,96 +143,100 @@ export default function Home() {
         </motion.section>
 
         {/* Skills Section */}
-        <motion.section
-          id="skills"
-          className="w-full py-16 bg-muted/40"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={sectionVariants}
-        >
-          <div className="container max-w-screen-lg">
-            <h2 className="text-center text-3xl font-bold tracking-tight">Technical Skills</h2>
-            <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-3 lg:grid-cols-4">
-              {portfolioData.profile.skills.map((skill) => (
-                <div key={skill.name}>
-                  <div className="mb-1 flex justify-between">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-sm text-muted-foreground">{skill.level}%</span>
+        {portfolioData.profile.skills.length > 0 && (
+          <motion.section
+            id="skills"
+            className="w-full py-16 bg-muted/40"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={sectionVariants}
+          >
+            <div className="container max-w-screen-lg">
+              <h2 className="text-center text-3xl font-bold tracking-tight">Technical Skills</h2>
+              <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-3 lg:grid-cols-4">
+                {portfolioData.profile.skills.map((skill) => (
+                  <div key={skill.name}>
+                    <div className="mb-1 flex justify-between">
+                      <span className="font-medium">{skill.name}</span>
+                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                    </div>
+                    <SkillProgress value={skill.level} />
                   </div>
-                  <SkillProgress value={skill.level} />
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </motion.section>
+          </motion.section>
+        )}
 
         {/* Projects Section */}
-        <motion.section
-          id="projects"
-          className="container max-w-screen-lg py-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={sectionVariants}
-        >
-          <h2 className="text-center text-3xl font-bold tracking-tight">My Projects</h2>
-          <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {portfolioData.profile.projects.map((project, index) => {
-              const placeholder = PlaceHolderImages.find(p => p.id === `project-${index + 1}`);
-              return (
-              <Card key={project.name} className="overflow-hidden transition-shadow hover:shadow-xl">
-                <CardHeader>
-                  {placeholder && (
-                    <Image 
-                      src={placeholder.imageUrl}
-                      alt={project.name}
-                      width={600}
-                      height={400}
-                      className="mb-4 aspect-[3/2] w-full rounded-md object-cover"
-                      data-ai-hint={placeholder.imageHint}
-                    />
-                  )}
-                  <CardTitle className="flex items-center justify-between">
-                    <span>{project.name}</span>
-                    <div className="flex items-center gap-3">
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
-                              <LinkIcon className="h-4 w-4" />
-                            </a>
-                          </TooltipTrigger>
-                          <TooltipContent><p>View Project</p></TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                      <TooltipProvider>
-                         <Tooltip>
-                           <TooltipTrigger asChild>
-                            <a href={project.repo} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
-                              <Github className="h-4 w-4" />
-                            </a>
-                          </TooltipTrigger>
-                          <TooltipContent><p>GitHub Repository</p></TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </div>
-                  </CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map(tech => (
-                      <div key={tech} className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                        {tech}
+        {portfolioData.profile.projects.length > 0 && (
+          <motion.section
+            id="projects"
+            className="container max-w-screen-lg py-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={sectionVariants}
+          >
+            <h2 className="text-center text-3xl font-bold tracking-tight">My Projects</h2>
+            <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {portfolioData.profile.projects.map((project, index) => {
+                const placeholder = PlaceHolderImages.find(p => p.id === `project-${index + 1}`);
+                return (
+                <Card key={project.name} className="overflow-hidden transition-shadow hover:shadow-xl">
+                  <CardHeader>
+                    {placeholder && (
+                      <Image 
+                        src={placeholder.imageUrl}
+                        alt={project.name}
+                        width={600}
+                        height={400}
+                        className="mb-4 aspect-[3/2] w-full rounded-md object-cover"
+                        data-ai-hint={placeholder.imageHint}
+                      />
+                    )}
+                    <CardTitle className="flex items-center justify-between">
+                      <span>{project.name}</span>
+                      <div className="flex items-center gap-3">
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                                <LinkIcon className="h-4 w-4" />
+                              </a>
+                            </TooltipTrigger>
+                            <TooltipContent><p>View Project</p></TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                        <TooltipProvider>
+                           <Tooltip>
+                             <TooltipTrigger asChild>
+                              <a href={project.repo} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                                <Github className="h-4 w-4" />
+                              </a>
+                            </TooltipTrigger>
+                            <TooltipContent><p>GitHub Repository</p></TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )})}
-          </div>
-        </motion.section>
+                    </CardTitle>
+                    <CardDescription>{project.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map(tech => (
+                        <div key={tech} className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                          {tech}
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )})}
+            </div>
+          </motion.section>
+        )}
 
         {/* Resume Section */}
         <motion.section

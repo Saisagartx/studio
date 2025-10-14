@@ -7,17 +7,25 @@ export const portfolioData = {
     linkedin: 'https://linkedin.com/in/sai-sagar-519570288',
     github: 'https://github.com/alex-doe', // This is a placeholder, please update
     skills: [
-        { name: 'React', level: 95 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'Node.js', level: 85 },
-        { name: 'Next.js', level: 90 },
-        { name: 'GraphQL', level: 80 },
-        { name: 'SQL & NoSQL', level: 88 },
-        { name: 'UI/UX Design', level: 75 },
-        { name: 'DevOps (Docker, CI/CD)', level: 70 },
+      { name: 'Java', level: 90 },
+      { name: 'HTML', level: 85 },
+      { name: 'CSS', level: 85 },
+      { name: 'JavaScript', level: 85 },
+      { name: 'Spring', level: 80 },
+      { name: 'Spring Boot', level: 80 },
+      { name: 'Bootstrap', level: 75 },
+      { name: 'SQL', level: 88 },
     ],
     experience: [],
-    projects: [],
+    projects: [
+      {
+        name: 'Tic-Tac-Toe Game',
+        description: 'A classic game where two players take turns marking a 3x3 grid. The game is built as a Java console application where players input numbers to place their marks. The main goal is to get three of the same marks in a row—horizontally, vertically, or diagonally.',
+        link: '#',
+        repo: '#',
+        technologies: ['Java'],
+      },
+    ],
     education: [
       {
         institution: 'Gates Institute of Technology',
@@ -43,6 +51,6 @@ export const portfolioData = {
     ],
   },
   bio: "To associate myself with a progressive and professional organization that provides a challenging and rewarding career, ensuring a high level of job satisfaction and to be part of organizational growth.",
-  aboutMe: "A recent graduate with a Bachelor of Technology in Electrical and Electronics Engineering, eager to apply my knowledge and skills in a challenging and rewarding professional environment. I am passionate about technology and organizational growth.",
+  aboutMe: "A recent graduate with a Bachelor of Technology in Electrical and Electronics Engineering, eager to apply my knowledge and skills in a challenging and rewarding professional environment. I am passionate about technology and organizational growth. I am certified in Communication Skills from MeProPearson, received a medal from Mahindra Pride for a soft skills workshop, and was awarded the Gates Honour award for Excellence.",
   avatarUrl: 'https://picsum.photos/seed/avatar/400/400',
 };

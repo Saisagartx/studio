@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "project-1",
+      "description": "Placeholder for project 1",
+      "imageUrl": "https://picsum.photos/seed/profolio1/600/400",
+      "imageHint": "web app"
+    },
+    {
+      "id": "project-2",
+      "description": "Placeholder for project 2",
+      "imageUrl": "https://picsum.photos/seed/profolio2/600/400",
+      "imageHint": "mobile interface"
+    },
+    {
+      "id": "project-3",
+      "description": "Placeholder for project 3",
+      "imageUrl": "https://picsum.photos/seed/profolio3/600/400",
+      "imageHint": "data visualization"
+    }
+  ]
 }

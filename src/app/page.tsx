@@ -244,26 +244,30 @@ export default function Home() {
                   <TooltipContent><p>GitHub Profile</p></TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <a href={portfolioData.profile.instagram} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
-                      <Instagram className="h-8 w-8" />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent><p>Instagram Profile</p></TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <a href={portfolioData.profile.facebook} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
-                      <Facebook className="h-8 w-8" />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent><p>Facebook Profile</p></TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              {portfolioData.profile.instagram && (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a href={portfolioData.profile.instagram} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
+                        <Instagram className="h-8 w-8" />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent><p>Instagram Profile</p></TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
+              {portfolioData.profile.facebook && (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a href={portfolioData.profile.facebook} target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-colors hover:text-primary">
+                        <Facebook className="h-8 w-8" />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent><p>Facebook Profile</p></TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
             </div>
           </div>
         </motion.section>

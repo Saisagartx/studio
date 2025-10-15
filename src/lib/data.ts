@@ -57,5 +57,5 @@ export const portfolioData = {
   },
   bio: "To associate myself with a progressive and professional organization that provides a challenging and rewarding career, ensuring a high level of job satisfaction and to be part of organizational growth.",
   aboutMe: "A recent graduate with a Bachelor of Technology in Electrical and Electronics Engineering, eager to apply my knowledge and skills in a challenging and rewarding professional environment. I am passionate about technology and organizational growth. I am certified in Communication Skills from MeProPearson, received a medal from Mahindra Pride for a soft skills workshop, and was awarded the Gates Honour award for Excellence.",
-  avatarUrl: 'https://media.licdn.com/dms/image/v2/D5603AQFCRYKx_XINZg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1698740529493?e=2147483647&v=beta&t=xXybH0krlpgi9VF3VIK-jtZ3oZ29qOZyEaoCB4x4LL0',
+  avatarUrl: '/myimage.jpg',
 };

@@ -24,6 +24,7 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -185,6 +186,36 @@ export default function Home() {
                   </CardContent>
                 </Card>
               )})}
+            </div>
+          </motion.section>
+        )}
+
+        {/* Education Section */}
+        {portfolioData.profile.education.length > 0 && (
+          <motion.section
+            id="education"
+            className="w-full py-16 bg-muted/40"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={sectionVariants}
+          >
+            <div className="container max-w-screen-lg">
+              <h2 className="text-center text-3xl font-bold tracking-tight">Education</h2>
+              <div className="mt-8 grid gap-8 md:grid-cols-2">
+                {portfolioData.profile.education.map((edu) => (
+                  <Card key={edu.institution} className="flex flex-col">
+                    <CardHeader>
+                      <CardTitle>{edu.institution}</CardTitle>
+                      <CardDescription>{edu.degree}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                      <p className="text-sm text-muted-foreground">{edu.startDate} - {edu.endDate}</p>
+                      <p className="mt-2 text-sm">{edu.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </motion.section>
         )}
